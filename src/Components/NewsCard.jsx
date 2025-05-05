@@ -2,6 +2,7 @@ import React from 'react';
 import { IoEyeOutline } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { CgShare } from "react-icons/cg";
+import { Link } from 'react-router';
 const NewsCard = ({news}) => {
     return (
         <div className='my-5'>
@@ -48,9 +49,9 @@ const NewsCard = ({news}) => {
         </p>
         <p>
           {news.details}{" "}
-          <span className="text-orange-500 font-medium cursor-pointer">
+          <Link to={`/news-details/${news.id}`} className="text-orange-500 font-medium cursor-pointer">
             Read More
-          </span>
+          </Link>
         </p>
       </div>
 

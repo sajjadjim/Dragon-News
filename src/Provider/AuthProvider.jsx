@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import app from '../Firebase/Firebase.config';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 // fireBase User set by create user by method using 
 const auth = getAuth(app);
@@ -11,6 +12,15 @@ return createUserWithEmailAndPassword(auth , email , password)
 };
 
 
+// log Out Function from fireBase 
+const logout = ()=>{
+    return signOut(auth);
+}
+
+// Log in function 
+const signIn= (email , password)=>{
+return signInWithEmailAndPassword(auth , email,password)
+}
 
 
 // 1st Create a context to use everywhere 
@@ -34,7 +44,9 @@ setUser(currentUser)
     const AUthData ={
         user,
         setUser,
-        createUser
+        createUser,
+        logout,
+        signIn,
     };
 
     console.log(user)

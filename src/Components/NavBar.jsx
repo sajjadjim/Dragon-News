@@ -3,7 +3,17 @@ import { Link, NavLink } from 'react-router';
 import logo from '../../public/assets/user.png'
 import { AuthContext } from '../Provider/AUthProvider';
 const NavBar = () => {
-    const {user} = use(AuthContext)
+    const {user , logout} = use(AuthContext)
+
+    // Logout from fiorebase 
+    const handleLogOut = ()=>{
+        logout()
+        .then(()=>{
+            alert("Successfully Log out !!!")
+        }).catcg((error) =>{
+            console.log(error)
+        })
+    }
     return (
         <div className='flex items-center justify-between w-10/12 mx-auto'>
            <div className=''>{user && user.email}</div>
@@ -12,7 +22,11 @@ const NavBar = () => {
            <NavLink to='/about'>About</NavLink>
            <NavLink to='/career'>Career</NavLink>
            </div>
-           <div className='flex gap-3'> <img src={logo} alt="" /><Link to='/auth/login' className='btn btn-primary text-white '>Login</Link></div>
+           <div className='flex gap-3'> <img src={logo} alt="" />
+           {
+            user? <Link onClick={()=>handleLogOut()} to='/auth/login' className='btn btn-primary text-white '>Loout</Link> : <Link to='/auth/login' className='btn btn-primary text-white '>Login</Link>
+           }
+           </div>
         </div>
     );
 };
