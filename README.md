@@ -4,7 +4,7 @@ Dragon News is a modern, responsive news website built using **React** and power
 
 ## 🌐 Live Demo
 
-[View Live Website](#) <!-- Replace with your live URL if available -->
+[View Live Website](https://dragon-news-with-authentication.vercel.app/category/1) <!-- Replace with your live URL if available -->
 
 ---
 
